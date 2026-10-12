@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Track your THREADLY orders â€” view order status, items and delivery details. Demonstration tracking only.">
+  <title>My Orders â€” THREADLY</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23000000'/%3E%3Cpath d='M16 4l4 2.4-1.6 4-1.6-.8V20H7.2V9.6l-1.6.8L4 6.4 8 4a4 4 0 0 0 8 0z' fill='%2300e676'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div id="site-header"></div>
+
+  <main id="main">
+    <div class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a> / My Orders</nav>
+        <h1 class="h1">My Orders</h1>
+        <p class="lead">View your order history and follow each order's progress. Tracking is simulated for this demonstration.</p>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="container">
+        <div id="newOrderBanner" class="hidden"></div>
+
+        <div class="flex justify-between items-center mb-0 wrap gap-3" style="margin-bottom:24px">
+          <h2 class="h3 mb-0">Order history</h2>
+          <div class="flex gap-2 wrap">
+            <button class="btn btn--ghost btn--sm" type="button" id="addSampleOrder">Add Sample Order (demo)</button>
+            <a class="btn btn--outline btn--sm" href="products.html">Continue Shopping</a>
+          </div>
+        </div>
+
+        <div id="ordersList"><!-- injected --></div>
+
+        <div id="ordersEmpty" class="empty hidden">
+          <div class="empty__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v9"/></svg>
+          </div>
+          <h3>No orders yet</h3>
+          <p>Once you place an order it will appear here with a live progress tracker.</p>
+          <div class="flex gap-3" style="justify-content:center;flex-wrap:wrap">
+            <a class="btn btn--accent" href="products.html">Start Shopping</a>
+            <a class="btn btn--outline" href="designer.html">Design Your Own</a>
+          </div>
+        </div>
+
+        <div class="demo-banner mt-5">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.5v.01"/></svg>
+          <span><b>About tracking:</b> Statuses here are stored in your browser and advanced manually with the "Advance status" button. Real courier tracking would require a backend or shipping-provider integration, which is outside the scope of this frontend-only project.</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/storage.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/orders.js"></script>
+</body>
+</html>

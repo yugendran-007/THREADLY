@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="THREADLY demo checkout â€” enter your delivery details and place your order. No real payment is processed.">
+  <title>Checkout â€” THREADLY</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23000000'/%3E%3Cpath d='M16 4l4 2.4-1.6 4-1.6-.8V20H7.2V9.6l-1.6.8L4 6.4 8 4a4 4 0 0 0 8 0z' fill='%2300e676'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div id="site-header"></div>
+
+  <main id="main">
+    <div class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a> / <a href="cart.html">Bag</a> / Checkout</nav>
+        <h1 class="h1">Checkout</h1>
+        <p class="lead">Enter your delivery details below. This is a demonstration store â€” no real payment is processed.</p>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="container checkout-layout">
+        <!-- ---------- Form ---------- -->
+        <form id="checkoutForm" novalidate>
+          <div class="checkout-section">
+            <div class="checkout-section__head">
+              <span class="step-dot">1</span>
+              <h2>Contact details</h2>
+            </div>
+            <div class="form-row form-row--2">
+              <div class="field" data-field="fullName">
+                <label for="fullName">Full name</label>
+                <input class="input" id="fullName" name="fullName" type="text" autocomplete="name" placeholder="e.g. Ananya Sharma" required>
+                <span class="error-msg">Please enter your full name (at least 3 characters).</span>
+              </div>
+              <div class="field" data-field="mobile">
+                <label for="mobile">Mobile number</label>
+                <input class="input" id="mobile" name="mobile" type="tel" inputmode="numeric" autocomplete="tel" placeholder="10-digit mobile number" required>
+                <span class="error-msg">Enter a valid 10-digit Indian mobile number.</span>
+              </div>
+            </div>
+            <div class="field" data-field="email">
+              <label for="email">Email address</label>
+              <input class="input" id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+              <span class="error-msg">Please enter a valid email address.</span>
+            </div>
+          </div>
+
+          <div class="checkout-section">
+            <div class="checkout-section__head">
+              <span class="step-dot">2</span>
+              <h2>Shipping address</h2>
+            </div>
+            <div class="field" data-field="address">
+              <label for="address">Address</label>
+              <textarea class="textarea" id="address" name="address" autocomplete="street-address" placeholder="House / flat number, street, area" required></textarea>
+              <span class="error-msg">Please enter your full address (at least 10 characters).</span>
+            </div>
+            <div class="form-row form-row--2">
+              <div class="field" data-field="city">
+                <label for="city">City</label>
+                <input class="input" id="city" name="city" type="text" autocomplete="address-level2" placeholder="e.g. Pune" required>
+                <span class="error-msg">Please enter your city.</span>
+              </div>
+              <div class="field" data-field="state">
+                <label for="state">State</label>
+                <input class="input" id="state" name="state" type="text" autocomplete="address-level1" placeholder="e.g. Maharashtra" required>
+                <span class="error-msg">Please enter your state.</span>
+              </div>
+            </div>
+            <div class="field" data-field="pincode" style="max-width:240px">
+              <label for="pincode">PIN code</label>
+              <input class="input" id="pincode" name="pincode" type="text" inputmode="numeric" autocomplete="postal-code" placeholder="6-digit PIN" required>
+              <span class="error-msg">Enter a valid 6-digit PIN code.</span>
+            </div>
+          </div>
+
+          <div class="checkout-section">
+            <div class="checkout-section__head">
+              <span class="step-dot">3</span>
+              <h2>Payment method</h2>
+            </div>
+            <div class="payment-options">
+              <label class="payment-option">
+                <input type="radio" name="payment" value="cod" checked>
+                <span><b>Cash on Delivery</b><small>Pay in cash when your order arrives. Recommended for this demo.</small></span>
+              </label>
+              <label class="payment-option">
+                <input type="radio" name="payment" value="online">
+                <span><b>Demo Online Payment</b><small>Simulated online payment for demonstration purposes only.</small></span>
+              </label>
+            </div>
+            <div class="demo-notice">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.5v.01"/></svg>
+              <span><b>Simulation notice:</b> This is a frontend-only project. No card details are collected and no real payment is processed. Selecting "Demo Online Payment" simply marks the order as paid for the demonstration.</span>
+            </div>
+          </div>
+
+          <label class="checkbox mb-0">
+            <input type="checkbox" id="saveInfo">
+            <span>Save my details in this browser for faster checkout next time (demo only).</span>
+          </label>
+        </form>
+
+        <!-- ---------- Summary ---------- -->
+        <aside class="summary-card" aria-label="Order summary">
+          <h3>Your Order</h3>
+          <div class="mini-cart" id="miniCart"><!-- injected --></div>
+          <div class="divider"></div>
+          <div class="summary-row"><span>Subtotal</span><span id="sumSubtotal">â‚¹0</span></div>
+          <div class="summary-row summary-row--discount"><span>Discount</span><span id="sumDiscount">âˆ’â‚¹0</span></div>
+          <div class="summary-row"><span>Delivery</span><span id="sumDelivery">â‚¹0</span></div>
+          <div class="summary-total"><span>Total</span><b id="sumTotal">â‚¹0</b></div>
+          <button class="btn btn--accent btn--block btn--lg mt-5" type="submit" form="checkoutForm" id="placeOrderBtn">Place Order</button>
+          <a class="btn btn--ghost btn--block mt-2" href="cart.html">Back to Bag</a>
+          <p class="secure-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+            Demo checkout &middot; your data stays in this browser
+          </p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/storage.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/checkout.js"></script>
+</body>
+</html>

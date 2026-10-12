@@ -1,0 +1,419 @@
+/* ==========================================================================
+   THREADLY — designer.css
+   Styles for the custom T-shirt design studio (designer.html).
+   Uses the tokens defined in style.css.
+   ========================================================================== */
+
+.studio {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: var(--s-6);
+  align-items: start;
+}
+
+/* ---- Left control panel -------------------------------------------------- */
+.studio-panel {
+  background: var(--c-bg);
+  border: 1px solid var(--c-line);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  position: sticky;
+  top: calc(var(--header-h) + 16px);
+}
+.studio-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--c-line);
+  background: var(--c-bg-soft);
+}
+.studio-tab {
+  flex: 1;
+  padding: 14px 8px;
+  border: none;
+  background: none;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--c-muted);
+  border-bottom: 2px solid transparent;
+  transition: color var(--t), border-color var(--t), background var(--t);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+.studio-tab:hover {
+  color: var(--c-ink);
+  background: var(--c-bg-alt);
+}
+.studio-tab.is-active {
+  color: var(--c-ink);
+  border-bottom-color: var(--c-accent);
+  background: var(--c-bg);
+}
+.studio-tab svg {
+  width: 16px;
+  height: 16px;
+}
+
+.studio-panel__body {
+  padding: var(--s-5);
+  max-height: calc(100vh - var(--header-h) - 90px);
+  overflow: auto;
+}
+.panel-section {
+  display: none;
+}
+.panel-section.is-active {
+  display: block;
+  animation: fade-in var(--t) both;
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.control-group {
+  margin-bottom: var(--s-5);
+}
+.control-group > label,
+.control-group > .control-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--c-ink);
+  margin-bottom: var(--s-3);
+}
+.control-group .help {
+  font-size: 0.78rem;
+  color: var(--c-faint);
+  margin: -6px 0 var(--s-3);
+}
+
+/* Fit cards */
+.fit-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s-2);
+}
+.fit-card {
+  position: relative;
+  border: 1px solid var(--c-line-strong);
+  border-radius: var(--r-md);
+  padding: var(--s-3) var(--s-2);
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--t);
+  background: var(--c-bg);
+}
+.fit-card input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.fit-card svg {
+  width: 34px;
+  height: 34px;
+  color: var(--c-muted);
+  margin-bottom: 6px;
+}
+.fit-card b {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--c-ink);
+}
+.fit-card small {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--c-faint);
+  margin-top: 2px;
+}
+.fit-card:hover {
+  border-color: var(--c-ink);
+}
+.fit-card input:checked ~ * {
+  color: inherit;
+}
+.fit-card:has(input:checked) {
+  border-color: var(--c-accent);
+  background: var(--c-accent-soft);
+  box-shadow: inset 0 0 0 1px var(--c-accent);
+}
+.fit-card:has(input:checked) svg {
+  color: var(--c-accent);
+}
+
+/* Text controls */
+.text-toggle-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-2);
+}
+.tool-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 9px 12px;
+  border: 1px solid var(--c-line-strong);
+  border-radius: var(--r-sm);
+  background: var(--c-bg);
+  font-size: 0.84rem;
+  font-weight: 600;
+  transition: all var(--t);
+}
+.tool-btn:hover {
+  border-color: var(--c-ink);
+}
+.tool-btn.is-active {
+  background: var(--c-accent);
+  border-color: var(--c-accent);
+  color: var(--c-on-accent);
+}
+.tool-btn svg {
+  width: 15px;
+  height: 15px;
+}
+.toolbar-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: var(--s-2);
+}
+.toolbar-row .tool-btn {
+  flex: 1;
+  min-width: 40px;
+}
+
+.range-row {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+}
+.range-row output {
+  min-width: 44px;
+  text-align: right;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--c-muted);
+}
+
+.color-input {
+  width: 48px;
+  height: 38px;
+  padding: 2px;
+  border: 1px solid var(--c-line-strong);
+  border-radius: var(--r-sm);
+  background: var(--c-bg);
+  cursor: pointer;
+}
+
+/* Upload dropzone */
+.dropzone {
+  border: 2px dashed var(--c-line-strong);
+  border-radius: var(--r-md);
+  padding: var(--s-6) var(--s-4);
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--t);
+  background: var(--c-bg-soft);
+}
+.dropzone:hover,
+.dropzone.is-drag {
+  border-color: var(--c-accent);
+  background: var(--c-accent-soft);
+}
+.dropzone svg {
+  width: 34px;
+  height: 34px;
+  color: var(--c-faint);
+  margin-bottom: var(--s-3);
+}
+.dropzone p {
+  margin: 0;
+  font-size: 0.86rem;
+  color: var(--c-muted);
+}
+.dropzone b {
+  color: var(--c-ink);
+}
+.upload-preview {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  padding: var(--s-3);
+  border: 1px solid var(--c-line);
+  border-radius: var(--r-md);
+  margin-top: var(--s-3);
+  background: var(--c-bg-soft);
+}
+.upload-preview img {
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+  border-radius: var(--r-sm);
+  background: #fff;
+  border: 1px solid var(--c-line);
+}
+.upload-preview .meta {
+  flex: 1;
+  min-width: 0;
+}
+.upload-preview .meta b {
+  display: block;
+  font-size: 0.84rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.upload-preview .meta span {
+  font-size: 0.75rem;
+  color: var(--c-faint);
+}
+
+/* ---- Right preview panel ------------------------------------------------- */
+.studio-preview {
+  background: var(--c-bg);
+  border: 1px solid var(--c-line);
+  border-radius: var(--r-lg);
+  padding: var(--s-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+.preview-toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  flex-wrap: wrap;
+}
+.preview-toolbar .spacer {
+  flex: 1;
+}
+.preview-toolbar .preview-hint {
+  font-size: 0.78rem;
+  color: var(--c-faint);
+}
+
+.canvas-stage {
+  background: radial-gradient(
+      circle at 50% 30%,
+      #191919,
+      #0d0d0d 70%
+    );
+  border: 1px solid var(--c-line);
+  border-radius: var(--r-lg);
+  padding: var(--s-5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 420px;
+  overflow: hidden;
+}
+#designCanvas {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 560px;
+  aspect-ratio: 5 / 6;
+  border-radius: var(--r-md);
+  box-shadow: var(--sh-md);
+  touch-action: none;
+  cursor: default;
+  background: #fff;
+}
+#designCanvas.is-draggable {
+  cursor: grab;
+}
+#designCanvas.is-dragging {
+  cursor: grabbing;
+}
+
+.selection-hint {
+  display: flex;
+  gap: var(--s-4);
+  flex-wrap: wrap;
+  font-size: 0.78rem;
+  color: var(--c-muted);
+}
+.selection-hint span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.selection-hint kbd {
+  background: var(--c-bg-alt);
+  border: 1px solid var(--c-line-strong);
+  border-radius: 5px;
+  padding: 1px 6px;
+  font-size: 0.72rem;
+  font-family: var(--font-sans);
+  color: var(--c-ink);
+}
+
+.studio-actions {
+  display: flex;
+  gap: var(--s-3);
+  flex-wrap: wrap;
+  margin-top: var(--s-5);
+}
+.studio-actions .btn {
+  flex: 1;
+  min-width: 160px;
+}
+
+.design-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+}
+
+/* ---- Designer responsive ------------------------------------------------- */
+@media (max-width: 1024px) {
+  .studio {
+    grid-template-columns: 1fr;
+  }
+  .studio-panel {
+    position: static;
+  }
+  .studio-panel__body {
+    max-height: none;
+  }
+  #designCanvas {
+    max-height: 480px;
+  }
+}
+
+@media (max-width: 560px) {
+  .studio-tabs {
+    font-size: 0.78rem;
+  }
+  .studio-tab {
+    padding: 12px 4px;
+  }
+  .studio-tab span {
+    display: none;
+  }
+  .studio-tab svg {
+    width: 20px;
+    height: 20px;
+  }
+  .fit-card small {
+    display: none;
+  }
+  .studio-actions .btn {
+    min-width: 0;
+    flex: 1 1 100%;
+  }
+  .canvas-stage {
+    padding: var(--s-3);
+    min-height: 320px;
+  }
+}
