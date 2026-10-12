@@ -212,3 +212,5 @@ Customized T-Shirt Designing and Ordering Website/
 Designed and built as a college mini-project demonstration using only HTML, CSS and
 vanilla JavaScript. Product mockups and icons are generated as inline SVG, so the project
 runs completely offline (Google Fonts are the only optional online resource).
+#   T H R E A D L Y  
+ 
